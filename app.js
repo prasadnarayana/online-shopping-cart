@@ -10,7 +10,9 @@ var passport = require("passport");
 // Bring in the database object
 var config = require("./config/database");
 
+// Bring in all routes
 var indexRouter = require('./routes/index');
+var userRouter = require("./routes/userRoutes");
 
 var app = express();
 
@@ -33,6 +35,7 @@ app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use("/user", userRouter);
 app.use('/', indexRouter);
 
 module.exports = app;

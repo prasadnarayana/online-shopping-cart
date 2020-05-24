@@ -31,6 +31,12 @@ module.exports.getUserById = (id, callback) => {
     User.findById(id, callback);
 };
 
+// Find the user by his/her email
+module.exports.getUserByEmail = (email, callback) => {
+    const query = { email: email };
+    User.findOne(query, callback);
+};
+
 // To register the user
 module.exports.signupUser = (newUser, callback) => {
     bcrypt.genSalt(10, (err, salt) => {
